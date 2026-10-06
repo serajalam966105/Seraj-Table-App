@@ -1,4 +1,5 @@
 import streamlit as st
+st.image("seraj.jpg",width=200)
 st.title("🏫Table by Seraj Alam👍")
 n = st.number_input("Table Number", value=2)
 m = st.number_input("Kitne tak", value=10)
