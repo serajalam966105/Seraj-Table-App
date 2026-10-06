@@ -1,6 +1,6 @@
 import streamlit as st
-st.image("seraj.jpg",width=200)
-st.markdown("<h1 style:'color:#DAA520;text-align: center;'>Table Design By Seraj Alam</h1>",unsafe_allow_html=True)
+st.image("seraj.jpg",width=250)
+st.markdown("<h1 style:'color:#FFFF00;text-align: center;'>Table Design By Seraj Alam</h1>",unsafe_allow_html=True)
 n = st.number_input("Table Number", value=2)
 m = st.number_input("Kitne tak", value=10)
 if st.button("Click here to show"):
