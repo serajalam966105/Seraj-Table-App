@@ -1,13 +1,7 @@
 import streamlit as st
-
-st.set_page_config(page_title="Table App", layout="centered")
-
-st.title("Table Generator by Seraj Alam")
-
-table_no = st.number_input("Enter Table Number", value=2, step=1)
-limit = st.number_input("Kitne Tak Chahiye?", value=10, min_value=1, max_value=100, step=1)
-
-if st.button("Click here to know"):
-    st.success(f"{table_no} ka Table")
-    for i in range(1, limit + 1):
-        st.write(f"{table_no} x {i} = {table_no * i}")
+st.title("Table by Seraj")
+n = st.number_input("Table Number", value=2)
+m = st.number_input("Kitne tak", value=10)
+if st.button("Show"):
+    for i in range(1, m+1):
+        st.write(n, "x", i, "=", n*i)
