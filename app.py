@@ -1,5 +1,5 @@
 import streamlit as st
-st.title("Table by Seraj")
+st.title("🏫Table by Seraj Alam👍")
 n = st.number_input("Table Number", value=2)
 m = st.number_input("Kitne tak", value=10)
 if st.button("Show"):
