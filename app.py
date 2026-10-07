@@ -23,7 +23,7 @@ if st.button("Click here to show Table"):
 
 # --- PART 2: Naya AI Chat Box ---
 st.divider()
-st.subheader("🤖 Seraj ka AI Assistant")
+st.subheader("🤖 Seraj Alam ka AI Assistant")
 
 # Chat history ko yaad rakhne ke liye
 if "messages" not in st.session_state:
