@@ -14,7 +14,7 @@ st.markdown("<h1 style='color:#FFFF00;text-align:center;'>Table Design By Seraj 
 try:
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
     # Naya model naam
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-1.5-flash')
 except Exception as e:
     st.error(f"API Key ka Error hai: {e}")
     st.stop()
