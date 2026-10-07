@@ -43,7 +43,7 @@ if prompt := st.chat_input("Yaha kuch pucho..."):
         try:
             with st.spinner("Soch raha hu..."):
                 response = client.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model="gemini-2.0-flash",
                     contents=prompt
                 )
                 reply = response.text
