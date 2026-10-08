@@ -30,14 +30,21 @@ def new_question():
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["📊 Table", "🔢 Analysis", "🧮 Tools", "🎮 Quiz Game", "✨ Daily Magic"])
 
 with tab1:
-    number = st.number_input("Write Any Number", value=19, step=1, key="t1")
+    number = st.number_input("Write Any Number", value=19, step=1)
+    
+    # Pehle se limit 10 set kar do
+    if "limit" not in st.session_state:
+        st.session_state.limit = 10
+
     if st.button("Show The Table"):
-        st.session_state.limit = 100
+        st.session_state.limit = 10   # Yahan 100 ki jagah 10 kar de
+
     if number:
         for i in range(1, st.session_state.limit + 1):
             st.write(f"{number} x {i} = {number * i}")
-        if st.button("Aur +100 Tak ➕"):
-            st.session_state.limit += 100
+
+        if st.button("Aur +10 Tak ➕"): # Yahan +100 ki jagah +10 kar de
+            st.session_state.limit += 10
             st.rerun()
 
 with tab2:
