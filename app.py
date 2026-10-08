@@ -154,7 +154,7 @@ with tab5:
 st.divider()
 st.header("🚀 More Useful Tools - Sabke Liye")
 
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs(["Table", "Percentage", "EMI", "IS Calculator", "Quiz Game", "Unit Converter", "Age Calc", "CGPA", "Bill Split", "BMI Index", "Profit Loss"])
+tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs(["Unit Converter"," %Percentage Calculator", "EMI Calculator", "Quiz Game", "CGPA", "BMI Index"])
 with tab6:
     st.subheader("📐 All-in-One Unit Converter")
     conv_type = st.selectbox("Kya Convert Karna Hai?", ["Length (Meter-Feet)", "Weight (KG-Gram)", "Temperature (C-F)"])
