@@ -4,7 +4,8 @@ st.set_page_config(page_title="Seraj Table App", page_icon="♾️")
 
 # Photo upar
 try:
-    st.image("seraj.jpg", caption="Seraj Alam", use_container_width=True)
+   st.markdown("<style>img{border-radius:50%}</style>", unsafe_allow_html=True)
+st.image("seraj.png", use_container_width=True)
 except:
     st.warning("seraj.jpg load nahi ho raha")
 
