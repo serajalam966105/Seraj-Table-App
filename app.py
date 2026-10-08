@@ -152,7 +152,7 @@ with tab5:
         st.info(f"📝 Means you **{dob.strftime('%d-%m-%Y')}** born on , and today **{today.strftime('%d-%m-%Y')}** you are **{total_days} Days** ka safar tay kar liya hai!")
         import math
 st.divider()
-st.header("🚀 More Useful Tools - Sabke Liye")
+st.header("🚀 More Useful Tools - For Everyone❗")
 
 tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs(["Unit Converter"," %Percentage Calculator", "EMI Calculator", "Quiz Game", "CGPA", "BMI Index"])
 with tab6:
@@ -170,21 +170,21 @@ with tab6:
 
 with tab7:
     st.subheader("% Percentage Calculator")
-    p_type = st.radio("Select:", ["Kitna % hai?", "Marks % Nikaalo", "Discount Nikaalo"])
+    p_type = st.radio("Select:", ["Kitna % hai?", "Marks % Find", "Discount Find"])
     if p_type == "Kitna % hai?":
         a = st.number_input("Value", value=50.0)
         b = st.number_input("Total", value=200.0)
         if b != 0:
             st.success(f"Result: {(a/b)*100:.2f}%")
-    elif p_type == "Marks % Nikaalo":
-        obtained = st.number_input("Mile Hue Number", value=450.0)
+    elif p_type == "Marks % Find":
+        obtained = st.number_input("Given Number", value=450.0)
         total_m = st.number_input("Total Number", value=500.0)
         if total_m != 0:
-            st.success(f"Aapka Percentage: {(obtained/total_m)*100:.2f}%")
+            st.success(f"Your Percentage: {(obtained/total_m)*100:.2f}%")
     else:
         price = st.number_input("Price", value=1000.0)
         disc = st.number_input("Discount %", value=20.0)
-        st.success(f"Discount ke baad: {price - (price*disc/100):.2f} Rs. Bachat: {price*disc/100:.2f} Rs.")
+        st.success(f"After Dicount: {price - (price*disc/100):.2f} Rs. Saving: {price*disc/100:.2f} Rs.")
 
 with tab8:
     st.subheader("🏦 EMI / Loan Calculator")
@@ -196,7 +196,7 @@ with tab8:
     if r > 0:
         emi = loan * r * (1+r)**n / ((1+r)**n - 1)
         st.success(f"Monthly EMI: {emi:.2f} Rs.")
-        st.info(f"Total Dena Hoga: {emi*n:.2f} Rs. | Total Interest: {emi*n - loan:.2f} Rs.")
+        st.info(f"Total Amount To Be Paid: {emi*n:.2f} Rs. | Total Interest: {emi*n - loan:.2f} Rs.")
     else:
         st.success(f"Monthly EMI: {loan/n:.2f} Rs.")
 
@@ -216,9 +216,9 @@ with tab10:
 with tab11:
     st.subheader("💪 BMI Index Calculator")
     
-    weight = st.number_input("Wajan (kg) me:", min_value=1.0, value=65.0, key="bmi_w11")
+    weight = st.number_input("Weight (kg) me:", min_value=1.0, value=65.0, key="bmi_w11")
     
-    unit = st.radio("Height kis me daloge?", ["CM me", "Feet-Inch me"], horizontal=True)
+    unit = st.radio("Height In?", ["CM me", "Feet-Inch me"], horizontal=True)
     
     height_cm = 0
     if unit == "CM me":
@@ -232,7 +232,7 @@ with tab11:
         height_cm = (feet * 12 + inch) * 2.54
         st.info(f"Aapki height = {height_cm:.1f} cm")
 
-    if st.button("BMI Nikalo", key="bmi_btn11"):
+    if st.button("Find BMI", key="bmi_btn11"):
         height_m = height_cm / 100
         bmi = weight / (height_m * height_m)
         st.success(f"Aapka BMI hai: {bmi:.2f}")
