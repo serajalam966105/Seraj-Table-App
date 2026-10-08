@@ -96,16 +96,51 @@ with tab4:
             st.rerun()
 
 with tab5:
-    st.subheader("Age Calculator 🎂")
-    dob = st.date_input("Apna Birthday Chunno", value=date(2010, 1, 1), key="dob")
+    st.subheader("🎂 Advance Age Calculator")
+    dob = st.date_input("Apna Birthday Chunno", value=date(2005, 1, 1), key="dob_adv")
 
-    # FIX: Error yahi aa raha tha, ab safe kar diya
     if dob is not None:
         today = date.today()
-        try:
-            age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
-            st.success(f"Tumhari Age hai: **{age} Years**")
-        except Exception as e:
-            st.write("Date select karo")
-    else:
-        st.write("Please apna DOB select karo")
+        now = st.session_state.get("now_time", None)
+
+        # Total din ka hisab
+        total_days = (today - dob).days
+
+        # Saal aur Mahina ka sahi hisab
+        years = today.year - dob.year
+        months = today.month - dob.month
+        days = today.day - dob.day
+
+        if days < 0:
+            months -= 1
+            # pichle mahine ke din add karo
+            if today.month == 1:
+                prev_month = 12
+                prev_year = today.year - 1
+            else:
+                prev_month = today.month - 1
+                prev_year = today.year
+            # mahine ke din
+            import calendar
+            days += calendar.monthrange(prev_year, prev_month)[1]
+
+        if months < 0:
+            years -= 1
+            months += 12
+
+        total_hours = total_days * 24
+        total_minutes = total_hours * 60
+        total_seconds = total_minutes * 60
+
+        st.success(f"🎉 Aap **{years} Years** ke ho gaye ho!")
+
+        st.write("### 📅 Line by Line Details:")
+        st.write(f"✅ **Saal (Years):** {years} saal")
+        st.write(f"✅ **Mahine (Months):** {years*12 + months} mahine (Total) | {months} mahine is saal me")
+        st.write(f"✅ **Din (Days):** {total_days} din total jiye ho")
+        st.write(f"✅ **Ghante (Hours):** {total_hours:,} ghante")
+        st.write(f"✅ **Minute:** {total_minutes:,} minutes")
+        st.write(f"✅ **Second:** {total_seconds:,} seconds")
+
+        st.divider()
+        st.info(f"📝 Matlab aap **{dob.strftime('%d-%m-%Y')}** ko paida hue the, aur aaj **{today.strftime('%d-%m-%Y')}** tak aapne **{total_days} din** ka safar tay kar liya hai!")
