@@ -7,9 +7,9 @@ st.markdown("<style>img{border-radius:50% !important;}</style>", unsafe_allow_ht
 
 # Photo upar - circle only
 try:
-    st.image("seraj.png", use_container_width=True)
+    st.image("seraj.jpg", use_container_width=True)
 except:
-    st.warning("seraj.png nahi mila, naam check karo")
+    st.warning("seraj.jpg nahi mila, naam check karo")
 
 st.title("Infinite Table Generator ♾️")
 
