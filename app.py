@@ -37,13 +37,13 @@ with tab1:
         st.session_state.limit = 10
 
     if st.button("Show The Table"):
-        st.session_state.limit = 10   # Yahan 100 ki jagah 10 kar de
+        st.session_state.limit = 10   
 
     if number:
         for i in range(1, st.session_state.limit + 1):
             st.write(f"{number} x {i} = {number * i}")
 
-        if st.button("Aur +10 Tak ➕"): # Yahan +100 ki jagah +10 kar de
+        if st.button("Aur +10 Tak ➕"):
             st.session_state.limit += 10
             st.rerun()
 
