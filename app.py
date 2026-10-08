@@ -155,8 +155,7 @@ with tab5:
 st.divider()
 st.header("🚀 More Useful Tools - Sabke Liye")
 
-tab6, tab7, tab8, tab9, tab10 = st.tabs(["📐 Unit Converter", "% Percentage", "🏦 EMI Calc", "🎓 CGPA Calc", "🧾 Bill Split"])
-
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs(["Table", "Percentage", "EMI", "IS Calculator", "Quiz Game", "Unit Converter", "Percentage", "Age Calc", "CGPA", "Bill Split", "BMI Index"])
 with tab6:
     st.subheader("📐 All-in-One Unit Converter")
     conv_type = st.selectbox("Kya Convert Karna Hai?", ["Length (Meter-Feet)", "Weight (KG-Gram)", "Temperature (C-F)"])
@@ -214,3 +213,20 @@ with tab10:
     total_bill = st.number_input("Total Bill (Rs)", value=1000.0)
     persons = st.number_input("Kitne Log?", min_value=1, value=4)
     st.success(f"Har ek ko dena hai: {total_bill/persons:.2f} Rs.")
+
+with tab11:
+    st.subheader("💪 BMI Index Calculator")
+    weight = st.number_input("Wajan (kg):", min_value=1.0, value=65.0, key="bmi_w11")
+    height = st.number_input("Height (cm):", min_value=50.0, value=170.0, key="bmi_h11")
+    if st.button("BMI Nikalo", key="bmi_btn11"):
+        bmi = weight / ((height/100)**2)
+        st.success(f"Aapka BMI hai: {bmi:.2f}")
+        if bmi < 18.5:
+            st.warning("Underweight")
+        elif bmi < 24.9:
+            st.success("Normal hai, Ekdum Mast! 💪")
+            st.balloons()
+        elif bmi < 29.9:
+            st.warning("Overweight")
+        else:
+            st.error("Obesity")
