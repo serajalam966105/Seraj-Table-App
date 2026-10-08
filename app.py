@@ -2,12 +2,14 @@ import streamlit as st
 
 st.set_page_config(page_title="Seraj Table App", page_icon="♾️")
 
-# Photo upar
+# White background hatane ke liye CSS
+st.markdown("<style>img{border-radius:50% !important;}</style>", unsafe_allow_html=True)
+
+# Photo upar - circle only
 try:
-   st.markdown("<style>img{border-radius:50%}</style>", unsafe_allow_html=True)
-st.image("seraj.png", use_container_width=True)
+    st.image("seraj.png", use_container_width=True)
 except:
-    st.warning("seraj.jpg load nahi ho raha")
+    st.warning("seraj.png nahi mila, naam check karo")
 
 st.title("Infinite Table Generator ♾️")
 
