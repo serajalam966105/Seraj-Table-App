@@ -31,21 +31,21 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["📊 Table", "🔢 Analysis", "🧮 Too
 
 with tab1:
     number = st.number_input("Write Any Number", value=19, step=1)
-    
-    # Pehle se limit 10 set kar do
-    if "limit" not in st.session_state:
+
+    if "limit" not in st.session_state or st.session_state.limit > 10:
         st.session_state.limit = 10
 
     if st.button("Show The Table"):
-        st.session_state.limit = 10   
+        st.session_state.limit = 10
 
     if number:
         for i in range(1, st.session_state.limit + 1):
             st.write(f"{number} x {i} = {number * i}")
 
-        if st.button("Aur +10 Tak ➕"):
-            st.session_state.limit += 10
-            st.rerun()
+        if st.session_state.limit < 50: 
+            if st.button("Aur +10 Tak ➕"):
+                st.session_state.limit += 10
+                st.rerun()
 
 with tab2:
     n = st.number_input("Number Daalo", value=19, step=1, key="t2")
