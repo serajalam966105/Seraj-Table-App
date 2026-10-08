@@ -2,8 +2,32 @@ import streamlit as st
 import math, random
 from datetime import date
 
-st.set_page_config(page_title="Seraj Maths Hub", page_icon="♾️")
-st.markdown("<style>img{border-radius:50% !important;}</style>", unsafe_allow_html=True)
+st.set_page_config(page_title="Seraj Maths Hub", page_icon="🧮", layout="centered")
+
+st.markdown("""
+<style>
+    img{border-radius:50% !important;}
+    .stApp { background-color: #f8f9fa; }
+    .stTabs [data-baseweb="tab-list"] { gap: 8px; }
+    .stTabs [data-baseweb="tab"] {
+        background-color: white;
+        border-radius: 8px;
+        padding: 8px 12px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #4CAF50 !important;
+        color: white !important;
+    }
+    .stButton>button {
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 10px;
+        font-weight: bold;
+        width: 100%;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 try:
     st.image("seraj.png", use_container_width=True)
