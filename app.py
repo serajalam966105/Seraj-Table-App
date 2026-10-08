@@ -13,7 +13,7 @@ st.title("Infinite Table Generator ♾️")
 if 'limit' not in st.session_state:
     st.session_state.limit = 100
 
-number = st.number_input("Koi bhi number likho", value=19, step=1)
+number = st.number_input("Write Any Number", value=19, step=1)
 
 if st.button("Show The Table"):
     st.session_state.limit = 100
