@@ -143,4 +143,4 @@ with tab5:
         st.write(f"✅ **Second:** {total_seconds:,} seconds")
 
         st.divider()
-        st.info(f"📝 Matlab aap **{dob.strftime('%d-%m-%Y')}** ko paida hue the, aur aaj **{today.strftime('%d-%m-%Y')}** tak aapne **{total_days} din** ka safar tay kar liya hai!")
+        st.info(f"📝 Means you **{dob.strftime('%d-%m-%Y')}** born on , and today **{today.strftime('%d-%m-%Y')}** you are **{total_days} Days** ka safar tay kar liya hai!")
