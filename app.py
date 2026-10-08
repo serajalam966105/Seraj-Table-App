@@ -144,3 +144,66 @@ with tab5:
 
         st.divider()
         st.info(f"📝 Means you **{dob.strftime('%d-%m-%Y')}** born on , and today **{today.strftime('%d-%m-%Y')}** you are **{total_days} Days** ka safar tay kar liya hai!")
+        import math
+st.divider()
+st.header("🚀 More Useful Tools - Sabke Liye")
+
+tab6, tab7, tab8, tab9, tab10 = st.tabs(["📐 Unit Converter", "% Percentage", "🏦 EMI Calc", "🎓 CGPA Calc", "🧾 Bill Split"])
+
+with tab6:
+    st.subheader("📐 All-in-One Unit Converter")
+    conv_type = st.selectbox("Kya Convert Karna Hai?", ["Length (Meter-Feet)", "Weight (KG-Gram)", "Temperature (C-F)"])
+    if conv_type == "Length (Meter-Feet)":
+        m = st.number_input("Meter daalo", value=1.0)
+        st.success(f"{m} Meter = {m*3.28084:.2f} Feet")
+    elif conv_type == "Weight (KG-Gram)":
+        kg = st.number_input("KG daalo", value=1.0)
+        st.success(f"{kg} KG = {kg*1000:.0f} Gram | {kg*2.20462:.2f} Pound")
+    else:
+        c = st.number_input("Celsius daalo", value=0.0)
+        st.success(f"{c}°C = {(c*9/5)+32:.2f}°F")
+
+with tab7:
+    st.subheader("% Percentage Calculator")
+    p_type = st.radio("Select:", ["Kitna % hai?", "Marks % Nikaalo", "Discount Nikaalo"])
+    if p_type == "Kitna % hai?":
+        a = st.number_input("Value", value=50.0)
+        b = st.number_input("Total", value=200.0)
+        if b != 0:
+            st.success(f"Result: {(a/b)*100:.2f}%")
+    elif p_type == "Marks % Nikaalo":
+        obtained = st.number_input("Mile Hue Number", value=450.0)
+        total_m = st.number_input("Total Number", value=500.0)
+        if total_m != 0:
+            st.success(f"Aapka Percentage: {(obtained/total_m)*100:.2f}%")
+    else:
+        price = st.number_input("Price", value=1000.0)
+        disc = st.number_input("Discount %", value=20.0)
+        st.success(f"Discount ke baad: {price - (price*disc/100):.2f} Rs. Bachat: {price*disc/100:.2f} Rs.")
+
+with tab8:
+    st.subheader("🏦 EMI / Loan Calculator")
+    loan = st.number_input("Loan Amount (Rs)", value=100000.0)
+    rate = st.number_input("Interest % (Salana)", value=10.0)
+    years = st.number_input("Saal", value=2.0)
+    r = rate / (12*100)
+    n = years * 12
+    if r > 0:
+        emi = loan * r * (1+r)**n / ((1+r)**n - 1)
+        st.success(f"Monthly EMI: {emi:.2f} Rs.")
+        st.info(f"Total Dena Hoga: {emi*n:.2f} Rs. | Total Interest: {emi*n - loan:.2f} Rs.")
+    else:
+        st.success(f"Monthly EMI: {loan/n:.2f} Rs.")
+
+with tab9:
+    st.subheader("🎓 CGPA to Percentage")
+    cgpa = st.number_input("CGPA Daalo (0-10)", min_value=0.0, max_value=10.0, value=8.2)
+    st.success(f"Percentage (x9.5 Formula): {cgpa*9.5:.2f}%")
+    st.info(f"Percentage (x10 Formula): {cgpa*10:.2f}%")
+    if cgpa >= 9: st.balloons()
+
+with tab10:
+    st.subheader("🧾 Bill Split Calculator")
+    total_bill = st.number_input("Total Bill (Rs)", value=1000.0)
+    persons = st.number_input("Kitne Log?", min_value=1, value=4)
+    st.success(f"Har ek ko dena hai: {total_bill/persons:.2f} Rs.")
