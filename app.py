@@ -5,7 +5,7 @@ from datetime import date
 st.set_page_config(page_title="Seraj Maths Hub", page_icon="🧮", layout="centered")
 st.markdown("<style>img{border-radius:50% !important;}</style>", unsafe_allow_html=True)
 try:
-    st.image("seraj.png", use_container_width=True)
+    st.image("seraj2.png", use_container_width=True)
 except:
     try:
         st.image("seraj.jpg", use_container_width=True)
