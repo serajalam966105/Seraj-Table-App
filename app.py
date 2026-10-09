@@ -259,3 +259,12 @@ with col2:
     st.link_button("📷 Instagram", "https://www.instagram.com/thinklikeseraj", use_container_width=True)
 with col3:
     st.link_button("📞 Call Me", "tel:+917739618329", use_container_width=True)
+
+
+st.markdown("---")
+st.markdown("### 🙋‍♂️ About Me")
+st.info("I am **Siraj Alam** from **Gopalganj, Bihar**. I built this useful website so that everyone can easily use it and learn knowledgeable things about their health. This is not just a BMI calculator - it has 10+ powerful features including BMI, BMR, Body Fat, Ideal Weight, Calorie Needs & more that you can use for free.")
+
+share_text = "🔥 Check out this amazing BMI Calculator with 10+ features built by Siraj from Gopalganj: https://mw4fskgaao8zzmefslugrc.streamlit.app/"
+st.link_button("🚀 Share on WhatsApp", f"https://wa.me/?text={share_text}", use_container_width=True)
+st.caption("Made with ❤️ in Gopalganj, Bihar | Follow @thinklikeseraj on Instagram")
