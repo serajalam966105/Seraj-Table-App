@@ -245,3 +245,17 @@ with tab11:
             st.warning("Overweight hai")
         else:
             st.error("Obesity hai")
+
+
+
+st.markdown("---")
+st.markdown("<h3 style='text-align: center;'>📞 Contact Me</h3>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: gray;'>Made with ❤️ by Seraj Alam | Daudnagar, Bihar</p>", unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.link_button("📱 WhatsApp", "https://wa.me/917739618329", use_container_width=True)
+with col2:
+    st.link_button("📷 Instagram", "https://www.instagram.com/thinklikeseraj", use_container_width=True)
+with col3:
+    st.link_button("📞 Call Me", "tel:+917739618329", use_container_width=True)
