@@ -250,7 +250,7 @@ with tab11:
 
 st.markdown("---")
 st.markdown("<h3 style='text-align: center;'>📞 Contact Me</h3>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: gray;'>Made with ❤️ by Seraj Alam | Daudnagar, Bihar</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: gray;'>Made with ❤️ by Seraj Alam | Gopalganj, Bihar</p>", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 with col1:
