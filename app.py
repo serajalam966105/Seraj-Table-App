@@ -3,29 +3,13 @@ import math, random
 from datetime import date
 
 st.set_page_config(page_title="Seraj Maths Hub", page_icon="🧮", layout="centered")
-st.markdown("""
-<style>
-    img{border-radius:50% !important; border:3px solid #1565c0 !important;}
-    .stApp { background: linear-gradient(to bottom right, #e3f2fd, #ffffff); }
-    h1 { text-align: center; color: #0d47a1; }
-    .stTabs [data-baseweb="tab-list"] { gap: 6px; }
-    .stTabs [data-baseweb="tab"] {
-        background-color: #ffffff;
-        border-radius: 10px;
-        padding: 5px;
-        box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
-    }
-</style>
-""", unsafe_allow_html=True)
-st.markdown("<h1 style='text-align:center; margin-bottom:0px;'>💎 SERAJ MATHS HUB 💎</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align:center; color:grey;'>All Calculator in One App</p>", unsafe_allow_html=True)
+st.markdown("<style>img{border-radius:50% !important;}</style>", unsafe_allow_html=True)
 try:
-    st.image("seraj2.png", use_container_width=True)
+    col1, col2, col3 = st.columns([1,1,1])
+    with col2:
+        st.image("seraj.jpg", width=180)
 except:
-    try:
-        st.image("seraj.jpg", use_container_width=True)
-    except:
-        pass
+    pass
 
 st.title("Seraj Alam Complete Maths Hub ♾️")
 
