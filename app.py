@@ -82,19 +82,19 @@ with tab4:
     st.write(f"Score: **{st.session_state.score}**")
     correct_ans = st.session_state.q1 * st.session_state.q2
     st.write(f"**Batao: {st.session_state.q1} x {st.session_state.q2} = ?**")
-    ans = st.number_input("Jawab likho", step=1, key="quiz_ans")
+    ans = st.number_input("Write Answer", step=1, key="quiz_ans")
 
     c1, c2 = st.columns(2)
     with c1:
         if st.button("Check Karo"):
             if ans == correct_ans:
                 st.balloons()
-                st.success(f"Sahi! {correct_ans} ✅")
+                st.success(f"Correct! {correct_ans} ✅")
                 st.session_state.score += 1
                 new_question()
                 st.rerun()
             else:
-                st.error(f"Galat! Sahi jawab {correct_ans} hai")
+                st.error(f"Wrong! Corrert Answer {correct_ans} ")
     with c2:
         if st.button("Next Question"):
             new_question()
@@ -102,7 +102,7 @@ with tab4:
 
 with tab5:
     st.subheader("🎂 Advance Age Calculator")
-    dob = st.date_input("Apna Birthday Chunno", value=date(2005, 1, 1), key="dob_adv")
+    dob = st.date_input("Choose your Birthday", value=date(2005, 1, 1), key="dob_adv")
 
     if dob is not None:
         today = date.today()
@@ -137,7 +137,7 @@ with tab5:
         total_minutes = total_hours * 60
         total_seconds = total_minutes * 60
 
-        st.success(f"🎉 Aap **{years} Years** ke ho gaye ho!")
+        st.success(f"🎉 You have turned **{years}**  !")
 
         st.write("### 📅 Line by Line Details:")
         st.write(f"✅ **Saal (Years):** {years} saal")
@@ -156,21 +156,21 @@ st.header("🚀 More Useful Tools - For Everyone❗")
 tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs(["Unit Converter"," %Percentage Calculator", "EMI Calculator", "CGPA", "Bill Split", "BMI Index"])
 with tab6:
     st.subheader("📐 All-in-One Unit Converter")
-    conv_type = st.selectbox("Kya Convert Karna Hai?", ["Length (Meter-Feet)", "Weight (KG-Gram)", "Temperature (C-F)"])
+    conv_type = st.selectbox("What to be Convert?", ["Length (Meter-Feet)", "Weight (KG-Gram)", "Temperature (C-F)"])
     if conv_type == "Length (Meter-Feet)":
-        m = st.number_input("Meter daalo", value=1.0)
+        m = st.number_input("Enter Meter", value=1.0)
         st.success(f"{m} Meter = {m*3.28084:.2f} Feet")
     elif conv_type == "Weight (KG-Gram)":
         kg = st.number_input("KG daalo", value=1.0)
         st.success(f"{kg} KG = {kg*1000:.0f} Gram | {kg*2.20462:.2f} Pound")
     else:
-        c = st.number_input("Celsius daalo", value=0.0)
+        c = st.number_input("Enter Celsius", value=0.0)
         st.success(f"{c}°C = {(c*9/5)+32:.2f}°F")
 
 with tab7:
     st.subheader("% Percentage Calculator")
-    p_type = st.radio("Select:", ["Kitna % hai?", "Marks % Find", "Discount Find"])
-    if p_type == "Kitna % hai?":
+    p_type = st.radio("Select:", ["Percentage Finder?", "Marks Percentage %", "Discount Calculator"])
+    if p_type == "What is the Percentage?":
         a = st.number_input("Value", value=50.0)
         b = st.number_input("Total", value=200.0)
         if b != 0:
@@ -189,8 +189,8 @@ with tab8:
     st.subheader("🏦 EMI / Loan Calculator - Pro")
 
     loan = st.number_input("Loan Amount (Rs)", value=100000.0, key="loan_tab8")
-    rate = st.number_input("Interest % (Salana)", value=10.0, key="rate_tab8")
-    years = st.number_input("Saal", value=2.0, key="year_tab8")
+    rate = st.number_input("Interest % (Yearly)", value=10.0, key="rate_tab8")
+    years = st.number_input("Year", value=2.0, key="year_tab8")
 
     r = rate / (12*100)
     n = years * 12
@@ -228,18 +228,18 @@ with tab9:
 with tab10:
     st.subheader("🧾 Bill Split Calculator")
     total_bill = st.number_input("Total Bill (Rs)", value=1000.0)
-    persons = st.number_input("Kitne Log?", min_value=1, value=4)
-    st.success(f"Har ek ko dena hai: {total_bill/persons:.2f} Rs.")
+    persons = st.number_input("How may People?", min_value=1, value=4)
+    st.success(f"Each one to give: {total_bill/persons:.2f} Rs.")
 
 with tab11:
     st.subheader("💪 BMI Index Calculator")
     
     weight = st.number_input("Weight (kg) me:", min_value=1.0, value=65.0, key="bmi_w11")
     
-    unit = st.radio("Height In?", ["CM me", "Feet-Inch me"], horizontal=True)
+    unit = st.radio("Height In?", ["IN cm", "Feet-Inch me"], horizontal=True)
     
     height_cm = 0
-    if unit == "CM me":
+    if unit == "IN cm":
         height_cm = st.number_input("Height (cm) me:", min_value=50.0, value=170.0, key="bmi_h_cm")
     else:
         col1, col2 = st.columns(2)
@@ -256,14 +256,14 @@ with tab11:
         st.success(f"Aapka BMI hai: {bmi:.2f}")
 
         if bmi < 18.5:
-            st.warning("Underweight ho")
+            st.warning("Underweight")
         elif bmi < 24.9:
-            st.success("Normal hai, Ekdum Mast! 🔥")
+            st.success("Normal hai, Perfect Balance this! 🔥")
             st.balloons()
         elif bmi < 29.9:
-            st.warning("Overweight hai")
+            st.warning("Overweight")
         else:
-            st.error("Obesity hai")
+            st.error("Obesity! Control On your Deiting")
 
 
 
