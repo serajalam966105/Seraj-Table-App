@@ -186,37 +186,35 @@ with tab7:
         st.success(f"After Dicount: {price - (price*disc/100):.2f} Rs. Saving: {price*disc/100:.2f} Rs.")
 
 with tab8:
-    st.subheader("🏦 EMI / Loan Calculator - Pro")
+    st.subheader("🏦 EMI Calculator Pro")
+    loan = st.number_input("Loan Amount (Rs)", value=50000.0)
+    rate = st.number_input("Interest % (Yearly)", value=10.0)
+    year = st.number_input("Year", value=2.0)
+    
+    n = year * 12
+    r = rate / 12 / 100
 
-    loan = st.number_input("Loan Amount (Rs)", value=100000.0, key="loan_tab8")
-    rate = st.number_input("Interest % (Yearly)", value=10.0, key="rate_tab8")
-    years = st.number_input("Year", value=2.0, key="year_tab8")
+    if r > 0:
+        emi = loan * r * (1+r)**n / ((1+r)**n - 1)
+        st.success(f"Monthly EMI: {emi:.2f} Rs.")
+        st.info(f"Total Amount To Be Paid: {emi*n:.2f} Rs. | Total Interest: {emi*n - loan:.2f} Rs.")
 
-    r = rate / (12*100)
-    n = years * 12
+        import pandas as pd
+        data = []
+        bal = loan
+        for i in range(1, int(n)+1):
+            int_pay = bal * r
+            prin_pay = emi - int_pay
+            bal -= prin_pay
+            data.append([i, f"{emi:.2f}", f"{prin_pay:.2f}", f"{int_pay:.2f}", f"{max(bal,0):.2f}"])
 
-   if r > 0:
-    emi = loan * r * (1+r)**n / ((1+r)**n - 1)
-    st.success(f"Monthly EMI: {emi:.2f} Rs.")
-    st.info(f"Total Amount To Be Paid: {emi*n:.2f} Rs. | Total Interest: {emi*n - loan:.2f} Rs.")
+        df = pd.DataFrame(data, columns=["Month", "EMI Paid", "Principal Paid", "Interest Paid", "Balance"])
+        st.write("### 📊 Month-wise Breakdown")
+        st.dataframe(df, use_container_width=True)
+        st.download_button("📥 Download EMI Table (CSV)", df.to_csv(index=False), "emi_table_monthwise.csv", key="dl_tab8")
 
-    # --- NAYA ADDITION - Table ---
-    import pandas as pd
-    data = []
-    bal = loan
-    for i in range(1, int(n)+1):
-        int_pay = bal * r
-        prin_pay = emi - int_pay
-        bal -= prin_pay
-        data.append([i, f"{emi:.2f}", f"{prin_pay:.2f}", f"{int_pay:.2f}", f"{max(bal,0):.2f}"])
-
-    df = pd.DataFrame(data, columns=["Month", "EMI Paid", "Principal Paid", "Interest Paid", "Balance"])
-    st.write("### 📊 Month-wise Breakdown")
-    st.dataframe(df, use_container_width=True)
-    st.download_button("📥 Download EMI Table (CSV)", df.to_csv(index=False), "emi_table_monthwise.csv", key="dl_tab8")
-
-else:
-    st.success(f"Monthly EMI: {loan/n:.2f} Rs.")
+    else:
+        st.success(f"Monthly EMI: {loan/n:.2f} Rs.")
     
 with tab9:
     st.subheader("🎓 CGPA to Percentage")
