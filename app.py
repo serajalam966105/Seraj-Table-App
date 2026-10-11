@@ -195,13 +195,13 @@ with tab8:
     r = rate / (12*100)
     n = years * 12
 
-    if r > 0:
-        emi = loan * r * (1+r)**n / ((1+r)**n - 1)
-        st.success(f"Monthly EMI: {emi:.2f} Rs.")
-        st.info(f"Total Amount To Be Paid: {emi*n:.2f} Rs. | Total Interest: {emi*n - loan:.2f} Rs.")
+   if r > 0:
+    emi = loan * r * (1+r)**n / ((1+r)**n - 1)
+    st.success(f"Monthly EMI: {emi:.2f} Rs.")
+    st.info(f"Total Amount To Be Paid: {emi*n:.2f} Rs. | Total Interest: {emi*n - loan:.2f} Rs.")
 
-        # --- NAYA ADDITION - Table ---
-        import pandas as pd
+    # --- NAYA ADDITION - Table ---
+    import pandas as pd
     data = []
     bal = loan
     for i in range(1, int(n)+1):
@@ -215,8 +215,9 @@ with tab8:
     st.dataframe(df, use_container_width=True)
     st.download_button("📥 Download EMI Table (CSV)", df.to_csv(index=False), "emi_table_monthwise.csv", key="dl_tab8")
 
-    else:
-        st.success(f"Monthly EMI: {loan/n:.2f} Rs.")
+else:
+    st.success(f"Monthly EMI: {loan/n:.2f} Rs.")
+    
 with tab9:
     st.subheader("🎓 CGPA to Percentage")
     cgpa = st.number_input("CGPA Daalo (0-10)", min_value=0.0, max_value=10.0, value=8.2)
