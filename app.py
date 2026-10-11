@@ -186,19 +186,38 @@ with tab7:
         st.success(f"After Dicount: {price - (price*disc/100):.2f} Rs. Saving: {price*disc/100:.2f} Rs.")
 
 with tab8:
-    st.subheader("🏦 EMI / Loan Calculator")
-    loan = st.number_input("Loan Amount (Rs)", value=100000.0)
-    rate = st.number_input("Interest % (Salana)", value=10.0)
-    years = st.number_input("Saal", value=2.0)
+    st.subheader("🏦 EMI / Loan Calculator - Pro")
+
+    loan = st.number_input("Loan Amount (Rs)", value=100000.0, key="loan_tab8")
+    rate = st.number_input("Interest % (Salana)", value=10.0, key="rate_tab8")
+    years = st.number_input("Saal", value=2.0, key="year_tab8")
+
     r = rate / (12*100)
     n = years * 12
+
     if r > 0:
         emi = loan * r * (1+r)**n / ((1+r)**n - 1)
         st.success(f"Monthly EMI: {emi:.2f} Rs.")
         st.info(f"Total Amount To Be Paid: {emi*n:.2f} Rs. | Total Interest: {emi*n - loan:.2f} Rs.")
+
+        # --- NAYA ADDITION - Table ---
+        import pandas as pd
+        data = []
+        bal = loan
+        for i in range(1, int(n)+1):
+            int_pay = bal * r
+            prin_pay = emi - int_pay
+            bal -= prin_pay
+            if i % 12 == 0 or i == 1 or i == int(n): # Har saal ka data
+                data.append([i, f"{prin_pay:.2f}", f"{int_pay:.2f}", f"{max(bal,0):.2f}"])
+        
+        df = pd.DataFrame(data, columns=["Month", "Principal Paid", "Interest Paid", "Balance"])
+        st.write("### 📊 Year-wise Breakdown")
+        st.dataframe(df, use_container_width=True)
+        st.download_button("📥 Download EMI Table (CSV)", df.to_csv(index=False), "emi_table.csv", key="dl_tab8")
+
     else:
         st.success(f"Monthly EMI: {loan/n:.2f} Rs.")
-
 with tab9:
     st.subheader("🎓 CGPA to Percentage")
     cgpa = st.number_input("CGPA Daalo (0-10)", min_value=0.0, max_value=10.0, value=8.2)
