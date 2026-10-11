@@ -202,19 +202,18 @@ with tab8:
 
         # --- NAYA ADDITION - Table ---
         import pandas as pd
-        data = []
-        bal = loan
-        for i in range(1, int(n)+1):
-            int_pay = bal * r
-            prin_pay = emi - int_pay
-            bal -= prin_pay
-            if i % 12 == 0 or i == 1 or i == int(n): # Har saal ka data
-                data.append([i, f"{prin_pay:.2f}", f"{int_pay:.2f}", f"{max(bal,0):.2f}"])
-        
-        df = pd.DataFrame(data, columns=["Month", "Principal Paid", "Interest Paid", "Balance"])
-        st.write("### 📊 Year-wise Breakdown")
-        st.dataframe(df, use_container_width=True)
-        st.download_button("📥 Download EMI Table (CSV)", df.to_csv(index=False), "emi_table.csv", key="dl_tab8")
+    data = []
+    bal = loan
+    for i in range(1, int(n)+1):
+        int_pay = bal * r
+        prin_pay = emi - int_pay
+        bal -= prin_pay
+        data.append([i, f"{emi:.2f}", f"{prin_pay:.2f}", f"{int_pay:.2f}", f"{max(bal,0):.2f}"])
+
+    df = pd.DataFrame(data, columns=["Month", "EMI Paid", "Principal Paid", "Interest Paid", "Balance"])
+    st.write("### 📊 Month-wise Breakdown")
+    st.dataframe(df, use_container_width=True)
+    st.download_button("📥 Download EMI Table (CSV)", df.to_csv(index=False), "emi_table_monthwise.csv", key="dl_tab8")
 
     else:
         st.success(f"Monthly EMI: {loan/n:.2f} Rs.")
