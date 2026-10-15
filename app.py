@@ -113,11 +113,40 @@ with t5:
     st.success(f"Each Person: {tb/np:.2f} Rs")
 
 with t6:
-    st.markdown("#### BMI Index Calculator")
-    wt = st.number_input("Weight (kg)", value=65.00, key="wt")
-    ht = st.number_input("Height (cm)", value=170.00, key="ht")
-    bmi = wt / ((ht/100)**2)
-    st.success(f"Your BMI is: {bmi:.2f}")
+   st.subheader("💪 BMI Index Calculator")
+    
+    weight = st.number_input("Weight (kg) me:", min_value=1.0, value=65.0, key="bmi_w11")
+    
+    unit = st.radio("Height In?", ["IN cm", "Feet-Inch me"], horizontal=True)
+    
+    height_cm = 0
+    if unit == "IN cm":
+        height_cm = st.number_input("Height (cm) me:", min_value=50.0, value=170.0, key="bmi_h_cm")
+    else:
+        col1, col2 = st.columns(2)
+        with col1:
+            feet = st.number_input("Feet:", min_value=1, value=5, key="bmi_feet")
+        with col2:
+            inch = st.number_input("Inch:", min_value=0, value=7, key="bmi_inch")
+        height_cm = (feet * 12 + inch) * 2.54
+        st.info(f"Aapki height = {height_cm:.1f} cm")
+
+    if st.button("Find BMI", key="bmi_btn11"):
+        height_m = height_cm / 100
+        bmi = weight / (height_m * height_m)
+        st.success(f"Aapka BMI hai: {bmi:.2f}")
+
+        if bmi < 18.5:
+            st.warning("Underweight")
+        elif bmi < 24.9:
+            st.success("Normal hai, Perfect Balance this! 🔥")
+            st.balloons()
+        elif bmi < 29.9:
+            st.warning("Overweight")
+        else:
+            st.error("Obesity! Control On your Deiting")
+
+
 
 # --- CONTACT ME (Tumhari photo wala exact code) ---
 st.markdown("---")
