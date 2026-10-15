@@ -61,17 +61,20 @@ with tab5:
     st.success(f"Aapki Age: {age} saal")
 
 with tab6:
-    st.header("🗣️ Bolta Table - Sunke Yaad Karo")
-    st.write("Bina photo ke sirf awaaz se table yaad karo.")
-    b_num = st.number_input("Kis number ka table sunna hai?", value=19, key="bolta_num")
-    if st.button("🔊 Bol Ke Sunao"):
-        full_text = f"{b_num} ka table. "
+    st.header("🔊 Speaking Table - Learn by Listening")
+    st.write("Listen and memorize tables without reading. Just listen to the audio.")
+    
+    b_num = st.number_input("Which number table do you want to listen?", value=19, key="bolta_num")
+    
+    if st.button("🔊 Speak The Table"):
+        full_text = f"Table of {b_num}. "
         for i in range(1, 11):
-            full_text += f"{b_num} guna {i} barabar {b_num*i}. "
-        tts = gTTS(text=full_text, lang='hi', slow=False)
+            full_text += f"{b_num} times {i} equals {b_num*i}. "
+        
+        tts = gTTS(text=full_text, lang='en', slow=False)
         tts.save("bolta.mp3")
         st.audio("bolta.mp3", autoplay=True)
-        st.success("Baj raha hai 🔊")
+        st.success(f"🔊 Now Playing Table of {b_num}")
 
 # --- MORE USEFUL TOOLS (Tumhare video wala section) ---
 st.markdown("---")
