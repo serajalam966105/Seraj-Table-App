@@ -25,7 +25,7 @@ def new_question():
     st.session_state.q1 = random.randint(2,20)
     st.session_state.q2 = random.randint(2,20)
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["📊 Table", "🔢 Analysis", "🧮 Tools", "🎮 Quiz Game", "✨ Daily Magic"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📊 Table", "🔢 Analysis", "🧮 Tools", "🎮 Quiz Game", "Age Calculator"])
 
 with tab1:
     number = st.number_input("Write Any Number", value=19, step=1)
