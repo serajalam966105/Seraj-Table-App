@@ -21,7 +21,7 @@ st.markdown("<h2 style='text-align:center;'>Seraj Alam Complete Maths Hub</h2>",
 st.markdown("<p style='text-align:center; color:gray;'>Your All-in-One Calculator & Learning App</p>", unsafe_allow_html=True)
 
 # --- TOP 6 TABS ---
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Table", "Analysis", "Tools", "Quiz Game", "Age Calculator", "🗣️ Bolta Table"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Table", "Analysis", "Tools", "Quiz Game", "Age Calculator", "🗣️ Speaking Table"])
 
 with tab1:
     st.subheader("Write Any Number")
