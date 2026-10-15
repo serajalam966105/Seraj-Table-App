@@ -22,7 +22,7 @@ st.markdown("<h2 style='text-align:center;'>Seraj Alam Complete Maths Hub</h2>",
 st.markdown("<p style='text-align:center; color:gray;'>Your All-in-One Calculator & Learning App</p>", unsafe_allow_html=True)
 
 # --- TOP 6 TABS ---
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Table", "Analysis", "Tools", "Quiz Game", "Age Calculator", "🗣️ Speaking Table"])
+tab1, tab2, tab3, tab4, tab5, tab6,tab7 = st.tabs(["Table", "Analysis", "Tools", "Quiz Game", "Age Calculator", "🗣️ Speaking Table","📷 Scan Question"])
 
 with tab1:
     st.subheader("Write Any Number")
@@ -76,6 +76,33 @@ with tab6:
         tts.save("bolta.mp3")
         st.audio("bolta.mp3", autoplay=True)
         st.success(f"🔊 Now Playing Table of {b_num}")
+
+with tab7:
+    st.header("📸 Scan Your Question")
+    st.write("Apni copy ka photo lo, mai solve kar dunga.")
+    
+    photo = st.camera_input("Camera se photo lo")
+    upload = st.file_uploader("Ya yahan se upload karo", type=['jpg','png','jpeg'])
+    
+    final_photo = photo if photo else upload
+    
+    if final_photo:
+        img = Image.open(final_photo)
+        st.image(img, width=300)
+        st.success("Photo mil gaya!")
+        q = st.text_input("Photo me kya likha hai? Jaise: 19*5", key="scan_q")
+        if q:
+            try:
+                ans = eval(q.replace('x','*').replace('X','*'))
+                st.success(f"Answer = {ans}")
+                
+                # English me bolega
+                speak_text = f"The answer is {ans}"
+                tts = gTTS(text=speak_text, lang='en')
+                tts.save("ans.mp3")
+                st.audio("ans.mp3", autoplay=True)
+            except:
+                st.error("Sahi se likho jaise 19*5")
 
 # --- MORE USEFUL TOOLS (Tumhare video wala section) ---
 st.markdown("---")
