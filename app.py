@@ -113,38 +113,44 @@ with t5:
     st.success(f"Each Person: {tb/np:.2f} Rs")
 
 with t6:
-   st.subheader("💪 BMI Index Calculator")
+    st.markdown("#### BMI Index Calculator")
     
-    weight = st.number_input("Weight (kg) me:", min_value=1.0, value=65.0, key="bmi_w11")
+    # Option select
+    unit = st.radio("Height kaise dalna hai?", ["cm me", "Fit + Inch me"], horizontal=True)
     
-    unit = st.radio("Height In?", ["IN cm", "Feet-Inch me"], horizontal=True)
+    wt = st.number_input("Weight (kg)", value=65.00, key="wt")
     
-    height_cm = 0
-    if unit == "IN cm":
-        height_cm = st.number_input("Height (cm) me:", min_value=50.0, value=170.0, key="bmi_h_cm")
+    if unit == "cm me":
+        ht = st.number_input("Height (cm)", value=170.00, key="ht")
+        height_m = ht / 100
     else:
-        col1, col2 = st.columns(2)
-        with col1:
-            feet = st.number_input("Feet:", min_value=1, value=5, key="bmi_feet")
-        with col2:
-            inch = st.number_input("Inch:", min_value=0, value=7, key="bmi_inch")
-        height_cm = (feet * 12 + inch) * 2.54
-        st.info(f"Aapki height = {height_cm:.1f} cm")
+        c1, c2 = st.columns(2)
+        with c1:
+            feet = st.number_input("Feet", value=5, min_value=1, key="feet")
+        with c2:
+            inch = st.number_input("Inch", value=6, min_value=0, max_value=11, key="inch")
+        total_inch = feet * 12 + inch
+        height_m = total_inch * 0.0254  # inch to meter
+        st.write(f"Total Height: {feet} ft {inch} inch = {total_inch} inch")
 
-    if st.button("Find BMI", key="bmi_btn11"):
-        height_m = height_cm / 100
-        bmi = weight / (height_m * height_m)
-        st.success(f"Aapka BMI hai: {bmi:.2f}")
-
+    bmi = wt / (height_m**2) if height_m > 0 else 0
+    
+    if bmi > 0:
         if bmi < 18.5:
-            st.warning("Underweight")
+            status = "Underweight 😟"
+            color = "orange"
         elif bmi < 24.9:
-            st.success("Normal hai, Perfect Balance this! 🔥")
-            st.balloons()
+            status = "Fit / Normal 😍"
+            color = "green"
         elif bmi < 29.9:
-            st.warning("Overweight")
+            status = "Overweight 😐"
+            color = "orange"
         else:
-            st.error("Obesity! Control On your Deiting")
+            status = "Obese 😟"
+            color = "red"
+        
+        st.success(f"Your BMI is: {bmi:.2f}")
+        st.markdown(f"<h4 style='color:{color};'>Status: {status}</h4>", unsafe_allow_html=True)
 
 
 
