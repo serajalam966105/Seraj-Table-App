@@ -2,6 +2,7 @@ import streamlit as st
 import random
 from datetime import date
 from gtts import gTTS
+from PIL import Image
 
 st.set_page_config(page_title="Seraj Alam Complete Maths Hub", page_icon="🧮", layout="wide")
 
