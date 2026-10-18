@@ -37,13 +37,43 @@ with tab1:
 
 with tab2:
     st.header("📊 Analysis")
-    st.info(f"{num} ka table {st.session_state.limit} tak. Isme har step me {num} add hota hai.")
+
+    n = st.number_input("Analysis ke liye number daalo:", value=10, step=1, key="analysis_num")
+    
+    if st.button("Analyze Karo"):
+        st.write(f"### Result for {n}")
+        
+        # Even / Odd
+        if n % 2 == 0:
+            st.write(f"**Even Number**")
+        else:
+            st.write(f"**Odd Number**")
+
+        # Prime Check
+        is_prime = True
+        if n < 2:
+            is_prime = False
+        else:
+            for i in range(2, int(n**0.5)+1):
+                if n % i == 0:
+                    is_prime = False
+                    break
+        if is_prime:
+            st.success(f"{n} ek **Prime Number**")
+        else:
+            st.error(f"{n} **Prime Number nahi**")
+
+        # Square, Cube, Roots
+        st.write(f"Square: {n**2}")
+        st.write(f"Cube: {n**3}")
+        st.write(f"Square Root: {n**0.5:.2f}")
+        st.write(f"Cube Root: {n**(1/3):.2f}")
 
 with tab3:
     st.header("🧰 Habit Tracker")
     
     st.subheader("📊 Habit Tracker")
-    habit = st.text_input("Apni Habit Likho:", placeholder="Ex: Roz 1 ghanta padhai")
+    habit = st.text_input("Write Your Habit:", placeholder="Ex: Daily 1 Hour In GYM🏋️")
     
     if habit:
         days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -66,11 +96,11 @@ with tab4:
             st.success("Sahi Jawab! 🎉")
             new_q()
         else:
-            st.error("Galat, fir try karo!")
+            st.error("Wrong, Try Again!")
 
 with tab5:
     st.header("🎂 Age Calculator")
-    dob = st.date_input("Apna DOB Chuno", value=date(2005,1,1))
+    dob = st.date_input("Choose Your DOB", value=date(2005,1,1))
     today = date.today()
     age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
     st.success(f"Aapki Age: {age} saal")
@@ -79,7 +109,7 @@ with tab6:
     st.header("🔊 Speaking Table - Learn by Listening")
     st.write("Listen and memorize tables without reading. Just listen to the audio.")
     
-    b_num = st.number_input("Which number table do you want to listen?", value=19, key="bolta_num")
+    b_num = st.number_input("Which number table do you want to listen?", value=19, key="Speak_num")
     
     if st.button("🔊 Speak The Table"):
         full_text = f"Table of {b_num}. "
@@ -93,18 +123,18 @@ with tab6:
 
 with tab7:
     st.header("📸 Scan Your Question")
-    st.write("Apni copy ka photo lo, mai solve kar dunga.")
+    st.write("Scan Your Question, I will Solve.")
     
-    photo = st.camera_input("Camera se photo lo")
-    upload = st.file_uploader("Ya yahan se upload karo", type=['jpg','png','jpeg'])
+    photo = st.camera_input("Take photo with your camera")
+    upload = st.file_uploader("Or upload from here", type=['jpg','png','jpeg'])
     
     final_photo = photo if photo else upload
     
     if final_photo:
         img = Image.open(final_photo)
         st.image(img, width=300)
-        st.success("Photo mil gaya!")
-        q = st.text_input("Photo me kya likha hai? Jaise: 19*5", key="scan_q")
+        st.success("Photo found!")
+        q = st.text_input("What write in photo? Example: 19*5", key="scan_q")
         if q:
             try:
                 ans = eval(q.replace('x','*').replace('X','*'))
