@@ -4,7 +4,7 @@ from datetime import date
 from gtts import gTTS
 from PIL import Image
 
-st.set_page_config(page_title="Seraj Alam Complete Maths Hub", page_icon="🧮", layout="wide")
+st.set_page_config(page_title="Solve With Seraj🎯", page_icon="🧮", layout="wide")
 import base64
 
 def circular_photo(image_path, size=150):
