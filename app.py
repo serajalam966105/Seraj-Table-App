@@ -22,7 +22,7 @@ st.markdown("<h2 style='text-align:center;'>Seraj Alam Complete Maths Hub</h2>",
 st.markdown("<p style='text-align:center; color:gray;'>Your All-in-One Calculator & Learning App</p>", unsafe_allow_html=True)
 
 # --- TOP 6 TABS ---
-tab1, tab2, tab3, tab4, tab5, tab6,tab7 = st.tabs(["Table", "Analysis", "Tools", "Quiz Game", "Age Calculator", "🗣️ Speaking Table","📷 Scan Question"])
+tab1, tab2, tab3, tab4, tab5, tab6,tab7 = st.tabs(["Table", "Analysis", "Habit Tracker", "Quiz Game", "Age Calculator", "🗣️ Speaking Table","📷 Scan Question"])
 
 with tab1:
     st.subheader("Write Any Number")
@@ -40,8 +40,22 @@ with tab2:
     st.info(f"{num} ka table {st.session_state.limit} tak. Isme har step me {num} add hota hai.")
 
 with tab3:
-    st.header("🧰 Tools")
-    st.write("More tools will be added here.")
+    st.header("🧰 Habit Tracker")
+    
+    st.subheader("📊 Habit Tracker")
+    habit = st.text_input("Apni Habit Likho:", placeholder="Ex: Roz 1 ghanta padhai")
+    
+    if habit:
+        days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        cols = st.columns(7)
+        count = 0
+        for i, day in enumerate(days):
+            with cols[i]:
+                if st.checkbox(day, key=day+habit):
+                    count += 1
+        
+        st.progress(count / 7)
+        st.success(f"Progress: {count}/7 din pura hua - {habit}")
 
 with tab4:
     st.header("🎮 Quiz Game")
