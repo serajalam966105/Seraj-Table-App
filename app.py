@@ -31,7 +31,7 @@ def new_q():
     st.session_state.q2 = random.randint(2,20)
 
 # --- TITLE ---
-st.markdown("<h2 style='text-align:center;'>Seraj Alam Complete Maths Hub</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align:center;'>Think and Solve With Seraj🎖️👍</h2>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; color:gray;'>Your All-in-One Calculator & Learning App</p>", unsafe_allow_html=True)
 
 # --- TOP 6 TABS ---
