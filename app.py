@@ -5,6 +5,19 @@ from gtts import gTTS
 from PIL import Image
 
 st.set_page_config(page_title="Seraj Alam Complete Maths Hub", page_icon="🧮", layout="wide")
+import base64
+
+def circular_photo(image_path, size=150):
+    with open(image_path, "rb") as img_file:
+        encoded = base64.b64encode(img_file.read()).decode()
+    st.markdown(f"""
+        <div style="display:flex; justify-content:center; margin-top:10px; margin-bottom:10px;">
+            <img src="data:image/jpeg;base64,{encoded}" 
+                 style="border-radius:50%; width:{size}px; height:{size}px; object-fit:cover; border:3px solid #4CAF50;">
+        </div>
+    """, unsafe_allow_html=True)
+
+circular_photo("seraj.jpg", 150)
 
 # --- SESSION ---
 if "limit" not in st.session_state:
