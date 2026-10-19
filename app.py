@@ -163,46 +163,150 @@ with tab7:
 
 with tab8:
     st.header("Formula Sheet - Class 9 & 10")
-    st.write("Choose Your Suhject, Every Important Formula given Here")
+    st.write("Select your subject, all important formulas are in one place")
 
-    subject = st.selectbox("Choose Subject", ["Maths Class 10", "Maths Class 9", "Physics Class 10", "Chemistry Class 10"])
+    subject = st.selectbox("Select Subject", [
+        "Maths Class 10", 
+        "Maths Class 9", 
+        "Physics Class 10", 
+        "Physics Class 9", 
+        "Chemistry Class 10", 
+        "Chemistry Class 9"
+    ])
 
+    # ---------------- MATHS CLASS 10 ----------------
     if subject == "Maths Class 10":
         with st.expander("Algebra"):
             st.latex(r"(a+b)^2 = a^2 + 2ab + b^2")
             st.latex(r"(a-b)^2 = a^2 - 2ab + b^2")
             st.latex(r"a^2 - b^2 = (a+b)(a-b)")
-            st.write("Quadratic Formula: x = [-b ± √(b²-4ac)] / 2a")
+            st.write("Quadratic Formula: x = [-b ± √(b² - 4ac)] / 2a")
+            st.write("AP nth term: a_n = a + (n-1)d")
+            st.write("AP Sum: S_n = n/2 [2a + (n-1)d]")
+
         with st.expander("Trigonometry"):
             st.latex(r"\sin^2\theta + \cos^2\theta = 1")
-            st.write("sin 0°=0, sin 30°=1/2, sin 45°=1/√2, sin 60°=√3/2, sin 90°=1")
-            st.write("cos 0°=1, cos 30°=√3/2, cos 45°=1/√2, cos 60°=1/2, cos 90°=0")
+            st.latex(r"1 + \tan^2\theta = \sec^2\theta")
+            st.latex(r"1 + \cot^2\theta = \csc^2\theta")
+            st.write("sin 0°=0, 30°=1/2, 45°=1/√2, 60°=√3/2, 90°=1")
+            st.write("cos 0°=1, 30°=√3/2, 45°=1/√2, 60°=1/2, 90°=0")
+            st.write("tan 0°=0, 30°=1/√3, 45°=1, 60°=√3, 90°=Not Defined")
 
+        with st.expander("Geometry & Mensuration"):
+            st.write("Circle Area = πr², Circumference = 2πr")
+            st.write("Triangle Area = 1/2 × base × height")
+            st.write("Cube: Volume = a³, Surface Area = 6a²")
+            st.write("Cuboid: Volume = l×b×h, Surface Area = 2(lb+bh+hl)")
+            st.write("Cylinder: Volume = πr²h, Curved Surface = 2πrh, Total Surface = 2πr(r+h)")
+            st.write("Cone: Volume = (1/3)πr²h, Curved Surface = πrl")
+            st.write("Sphere: Volume = (4/3)πr³, Surface Area = 4πr²")
+
+        with st.expander("Statistics & Probability"):
+            st.write("Mean = Sum of observations / Number of observations")
+            st.write("Probability = Favourable Outcomes / Total Outcomes")
+            st.write("P(E) + P(Not E) = 1")
+
+    # ---------------- MATHS CLASS 9 ----------------
     elif subject == "Maths Class 9":
-        with st.expander("Number System & Algebra"):
-            st.latex(r"(x + y + z)^2 = x^2 + y^2 + z^2 + 2xy + 2yz + 2zx")
-            st.latex(r"x^3 + y^3 = (x+y)(x^2 - xy + y^2)")
-            st.write("√2, √3 ye sab Irrational Number hote hain")
+        with st.expander("Number System & Polynomials"):
+            st.latex(r"(x+y+z)^2 = x^2 + y^2 + z^2 + 2xy + 2yz + 2zx")
+            st.latex(r"x^3 + y^3 + z^3 - 3xyz = (x+y+z)(x^2+y^2+z^2-xy-yz-zx)")
+            st.write("Rational Number = p/q form, q ≠ 0")
+            st.write("√2, √3, √5 are all Irrational Numbers")
 
+        with st.expander("Geometry"):
+            st.write("Heron's Formula: Area = √[s(s-a)(s-b)(s-c)], where s = (a+b+c)/2")
+            st.write("Sum of 3 angles of a Triangle = 180°")
+            st.write("Angle at center is double the angle at the circumference on same arc")
+
+        with st.expander("Surface Area & Volume (Class 9)"):
+            st.write("Cuboid Volume = l×b×h")
+            st.write("Cube Volume = a³")
+            st.write("Cylinder Volume = πr²h")
+
+    # ---------------- PHYSICS CLASS 10 ----------------
     elif subject == "Physics Class 10":
         with st.expander("Light - Mirror & Lens"):
             st.write("Mirror Formula: 1/v + 1/u = 1/f")
-            st.write("Magnification: m = -v/u = h'/h")
-            st.write("Lens Power: P = 1/f (f in meter)")
-        with st.expander("Electricity"):
-            st.write("V = I x R")
-            st.write("Power: P = V x I = I²R = V²/R")
+            st.write("Magnification (m) = -v/u = Height of Image / Height of Object")
+            st.write("Lens Formula: 1/v - 1/u = 1/f")
+            st.write("Lens Power: P = 1/f (f in meter, P in Dioptre)")
+            st.write("Refraction: n = speed of light in vacuum / speed in medium")
 
+        with st.expander("Electricity"):
+            st.write("Ohm's Law: V = I × R")
+            st.write("Resistance in Series: R = R1 + R2 + R3")
+            st.write("Resistance in Parallel: 1/R = 1/R1 + 1/R2 + 1/R3")
+            st.write("Power: P = V × I = I²R = V²/R")
+            st.write("Electric Energy: E = P × t (in kWh)")
+
+        with st.expander("Magnetic Effect"):
+            st.write("Fleming's Left Hand Rule - For Motor")
+            st.write("Fleming's Right Hand Rule - For Generator")
+
+    # ---------------- PHYSICS CLASS 9 ----------------
+    elif subject == "Physics Class 9":
+        with st.expander("Motion"):
+            st.write("1st Equation: v = u + at")
+            st.write("2nd Equation: s = ut + (1/2)at²")
+            st.write("3rd Equation: v² = u² + 2as")
+            st.write("Speed = Distance / Time, Velocity = Displacement / Time")
+            st.write("Acceleration = (v - u) / t")
+
+        with st.expander("Force, Work & Energy"):
+            st.write("Newton 2nd Law: F = m × a")
+            st.write("Weight: W = m × g (g = 9.8 m/s²)")
+            st.write("Work: W = F × s × cosθ")
+            st.write("Kinetic Energy: KE = (1/2)mv²")
+            st.write("Potential Energy: PE = m × g × h")
+            st.write("Power: P = Work / Time")
+
+        with st.expander("Sound & Gravitation"):
+            st.write("Universal Gravitation: F = G × (m1×m2) / r²")
+            st.write("Speed of Sound in Air = 343 m/s (at 25°C)")
+            st.write("Frequency = 1 / Time Period (f = 1/T)")
+
+    # ---------------- CHEMISTRY CLASS 10 ----------------
     elif subject == "Chemistry Class 10":
         with st.expander("Chemical Reactions"):
-            st.write("Combination: A + B -> AB")
-            st.write("Decomposition: AB -> A + B")
-            st.write("Oxidation me Oxygen add hota hai, Reduction me Oxygen remove hota hai")
-        with st.expander("Acid, Base & Salt"):
-            st.write("pH Scale 0 to 14 tak hota hai")
-            st.write("Acid ka pH < 7, Base ka pH > 7, Neutral ka pH = 7")
-            st.write("HCl = Hydrochloric Acid, H2SO4 = Sulphuric Acid")
+            st.write("Combination: A + B → AB")
+            st.write("Decomposition: AB → A + B")
+            st.write("Displacement: A + BC → AC + B")
+            st.write("Double Displacement: AB + CD → AD + CB")
+            st.write("Oxidation = Oxygen added / Hydrogen removed")
+            st.write("Reduction = Oxygen removed / Hydrogen added")
 
+        with st.expander("Acid, Base & Salt"):
+            st.write("pH Scale is from 0 to 14")
+            st.write("Acid pH < 7 (HCl, H2SO4, CH3COOH)")
+            st.write("Base pH > 7 (NaOH, KOH, Ca(OH)2)")
+            st.write("Neutral pH = 7 (Water)")
+            st.write("pH = -log [H+]")
+
+        with st.expander("Metals & Non-Metals"):
+            st.write("Reactivity Series: K > Na > Ca > Mg > Al > Zn > Fe > Pb > H > Cu > Ag > Au")
+            st.write("Metal + Acid → Salt + Hydrogen gas")
+            st.write("Metal Oxide + Acid → Salt + Water")
+
+        with st.expander("Carbon Compounds"):
+            st.write("Homologous Series: Alkane = CnH2n+2")
+            st.write("Alkene = CnH2n, Alkyne = CnH2n-2")
+            st.write("Ethanol: C2H5OH, Ethanoic Acid: CH3COOH")
+
+    # ---------------- CHEMISTRY CLASS 9 ----------------
+    elif subject == "Chemistry Class 9":
+        with st.expander("Matter & Atoms"):
+            st.write("Matter has 3 states: Solid, Liquid, Gas")
+            st.write("Evaporation causes cooling")
+            st.write("Atomic Mass Unit: 1 amu = 1/12 of C-12 atom")
+            st.write("Mole: 1 mole = 6.022 × 10²³ particles (Avogadro Number)")
+
+        with st.expander("Structure of Atom"):
+            st.write("Proton = + charge, Electron = - charge, Neutron = No charge")
+            st.write("Atomic Number = Number of Protons")
+            st.write("Mass Number = Protons + Neutrons")
+            st.write("Isotope: Same Proton, Different Neutron (e.g., C-12, C-14)")
+            st.write("Electronic Configuration: K=2, L=8, M=18 rule")
 # --- MORE USEFUL TOOLS (Tumhare video wala section) ---
 st.markdown("---")
 st.markdown("### 🚀 More Useful Tools - For Everyone")
