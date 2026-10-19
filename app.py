@@ -35,7 +35,7 @@ st.markdown("<h2 style='text-align:center;'>Think and Solve With Seraj🎖️�
 st.markdown("<p style='text-align:center; color:gray;'>Your All-in-One Calculator & Learning App</p>", unsafe_allow_html=True)
 
 # --- TOP 6 TABS ---
-tab1, tab2, tab3, tab4, tab5, tab6,tab7 = st.tabs(["Table", "Analysis", "Habit Tracker", "Quiz Game", "Age Calculator", "🗣️ Speaking Table","📷 Scan Question"])
+tab1, tab2, tab3, tab4, tab5, tab6,tab7, tab8= st.tabs(["Table", "Analysis", "Habit Tracker", "Quiz Game", "Age Calculator", "🗣️ Speaking Table","📷 Scan Question", "Formula Sheet"])
 
 with tab1:
     st.subheader("Write Any Number")
@@ -160,6 +160,48 @@ with tab7:
                 st.audio("ans.mp3", autoplay=True)
             except:
                 st.error("Sahi se likho jaise 19*5")
+
+with tab8:
+    st.header("Formula Sheet - Class 9 & 10")
+    st.write("Choose Your Suhject, Every Important Formula given Here")
+
+    subject = st.selectbox("Choose Subject", ["Maths Class 10", "Maths Class 9", "Physics Class 10", "Chemistry Class 10"])
+
+    if subject == "Maths Class 10":
+        with st.expander("Algebra"):
+            st.latex(r"(a+b)^2 = a^2 + 2ab + b^2")
+            st.latex(r"(a-b)^2 = a^2 - 2ab + b^2")
+            st.latex(r"a^2 - b^2 = (a+b)(a-b)")
+            st.write("Quadratic Formula: x = [-b ± √(b²-4ac)] / 2a")
+        with st.expander("Trigonometry"):
+            st.latex(r"\sin^2\theta + \cos^2\theta = 1")
+            st.write("sin 0°=0, sin 30°=1/2, sin 45°=1/√2, sin 60°=√3/2, sin 90°=1")
+            st.write("cos 0°=1, cos 30°=√3/2, cos 45°=1/√2, cos 60°=1/2, cos 90°=0")
+
+    elif subject == "Maths Class 9":
+        with st.expander("Number System & Algebra"):
+            st.latex(r"(x + y + z)^2 = x^2 + y^2 + z^2 + 2xy + 2yz + 2zx")
+            st.latex(r"x^3 + y^3 = (x+y)(x^2 - xy + y^2)")
+            st.write("√2, √3 ye sab Irrational Number hote hain")
+
+    elif subject == "Physics Class 10":
+        with st.expander("Light - Mirror & Lens"):
+            st.write("Mirror Formula: 1/v + 1/u = 1/f")
+            st.write("Magnification: m = -v/u = h'/h")
+            st.write("Lens Power: P = 1/f (f in meter)")
+        with st.expander("Electricity"):
+            st.write("V = I x R")
+            st.write("Power: P = V x I = I²R = V²/R")
+
+    elif subject == "Chemistry Class 10":
+        with st.expander("Chemical Reactions"):
+            st.write("Combination: A + B -> AB")
+            st.write("Decomposition: AB -> A + B")
+            st.write("Oxidation me Oxygen add hota hai, Reduction me Oxygen remove hota hai")
+        with st.expander("Acid, Base & Salt"):
+            st.write("pH Scale 0 to 14 tak hota hai")
+            st.write("Acid ka pH < 7, Base ka pH > 7, Neutral ka pH = 7")
+            st.write("HCl = Hydrochloric Acid, H2SO4 = Sulphuric Acid")
 
 # --- MORE USEFUL TOOLS (Tumhare video wala section) ---
 st.markdown("---")
